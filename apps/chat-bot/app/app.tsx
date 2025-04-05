@@ -1,10 +1,13 @@
 // Uncomment this line to use CSS modules
-import NxWelcome from './nx-welcome';
+
+import { Chat } from "./chat";
+import { AxiosConfig } from "./config/axios";
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="chat-bot" />
+      <AxiosConfig />
+      <Chat />
     </div>
   );
 }

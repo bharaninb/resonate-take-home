@@ -8,12 +8,19 @@ export default defineConfig(() => ({
   server: {
     port: 4200,
     host: 'localhost',
+    hmr: {
+      overlay: true,
+    }
   },
   preview: {
     port: 4300,
     host: 'localhost',
   },
   plugins: [!process.env.VITEST && reactRouter()],
+  // ssr: {
+  //   noExternal: ['@ant-design/x'],
+  // },
+  
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
@@ -25,5 +32,6 @@ export default defineConfig(() => ({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    
   },
 }));
