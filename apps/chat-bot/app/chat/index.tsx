@@ -2,7 +2,7 @@ import { UserOutlined } from '@ant-design/icons'
 import { Bubble, Sender, useXAgent, useXChat } from '@ant-design/x'
 import { Flex, GetProp } from 'antd'
 import axios from 'axios'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const roles: GetProp<typeof Bubble.List, 'roles'> = {
   ai: {
@@ -25,13 +25,21 @@ const Chat = () => {
   // We will move this static to the library so that it can be used in server side as well
   const [chatId, setChatId] = useState('NEW_CHAT_ID')
 
+  useEffect(() => {
+    localStorage.setItem('chatId', chatId)
+  }, [chatId])
+
+
   // Agent for request
   const [agent] = useXAgent({
     request: async ({ message }, { onSuccess, onError }) => {
-      const response = await axios.post(`chat/${chatId}`, {message})
       
-      onSuccess(response.data)
-      
+      const response = await axios.post(`chat/${localStorage.getItem('chatId')}`, {
+        message
+      });
+      setChatId(response.data.chatId)
+      onSuccess(response.data.message)
+
 
       // onError(new Error('Mock request failed'))
     },

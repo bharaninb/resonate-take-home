@@ -12,7 +12,8 @@ import { AppNav } from './app-nav';
 
 export const meta: MetaFunction = () => [
   {
-    title: 'New Nx React Router App',
+    title: 'Resonate Chat Bot',
+    description: 'A chat bot for medical appointment scheduling',
   },
 ];
 

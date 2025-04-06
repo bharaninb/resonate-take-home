@@ -23,12 +23,24 @@ export class OpenaiService {
 
   async chatCompletion(
     messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[],
+    tools: OpenAI.Chat.Completions.ChatCompletionTool[]
   ): Promise<OpenAI.Chat.Completions.ChatCompletion> {
-    const response = await this.openai.chat.completions.create({
-      model: 'gpt-4',
-      messages,
-    })
 
-    return response
+    try {
+      const response = await this.openai.chat.completions.create({
+        model: 'gpt-4',
+        temperature: 0.7,
+        messages,
+        tools
+      })
+  
+      return response
+    }
+    catch (error) {
+      // We can log the error here or handle it in a way that makes sense for your application
+      console.error('Error in chatCompletion:', error)
+      throw new Error(fallbackMessage)
+    }
+    
   }
 }
