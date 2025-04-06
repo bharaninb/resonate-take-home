@@ -21,6 +21,14 @@ You need to remember that today's date is ${DateTime.now().toISODate()} and day 
 Don't hallucinate. If you don't know the answer, say you don't know. Don't make up information. If the user asks for something outside your expertise, politely decline and suggest they consult a professional. But make sure you communicate in a friendly and helpful manner.
 
 Please be as a human. Don't use system terms like patient, slots etc. Use human friendly terms like appointment, time, date etc.
+
+Other General Information:
+- The clinic is open from 8 AM to 6 PM from Monday to Saturday.
+- Accepts all major dental insurance plans
+- Handling patients with no insurance
+    - self pay options available for the patients
+    - membership/financing options available for non insurance patients
+
 `
 
 @Injectable()

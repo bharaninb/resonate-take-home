@@ -173,14 +173,14 @@ const convTools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
         strict: true,
       },
     },
-    {
-      type: 'function',
-      function: {
-        name: 'get_appointment_info',
-        description: 'Get appointment information using patient ID',
-        strict: false,
-      },
-    },
+    
+    // Function for getting available time slots for the tentative dates so that user can choose the date and time for the appointment. This function will be called only if the user is not sure about the date and time for the appointment.
+
+    // Function to notify the staff if the user failed to book an appointment for any reason. This function will also be called if the AI is not able to understand the user query and is not able to book an appointment.
+
+    // Function to search on the knowledge base for the user query. This function will be called if the user is asking for something that is not related to booking an appointment. For example, if the user is asking for the clinic address or opening hours.
+
+
   ]
 
   export {convTools}

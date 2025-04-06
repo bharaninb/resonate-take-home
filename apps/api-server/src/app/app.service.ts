@@ -25,7 +25,6 @@ export class AppService {
   ): Promise<any> {
     const args = JSON.parse(tool_call.function.arguments)
 
-    console.log('Function call:', tool_call.function.name, args)
     switch (tool_call.function.name) {
       case 'create_patient':
         return this.patientService.createPatient(args) || 'Patient creation failed'
@@ -61,6 +60,7 @@ export class AppService {
         )
       case 'cancel_appointment':
         return this.appointmentService.cancelAppointment(args['code'], args['cancelReason'])
+
       case 'get_appointment_info':
         return this.appointmentService.getAppointmentsByPatientId(args['patientId'])
 
@@ -76,13 +76,9 @@ export class AppService {
     while (true) {
       const response = await this.openaiService.chatCompletion(chatHistory, convTools)
 
-      console.log(response.choices)
-
       const responseMsg = response.choices[0].message
 
       chatHistory = this.conversationService.addResponseToConversation(convId, responseMsg)
-
-      console.log(responseMsg)
 
       // If there is no function call, we're done and can exit this loop
       if (!responseMsg.tool_calls) {
@@ -93,7 +89,6 @@ export class AppService {
       }
 
       await mapRad(responseMsg.tool_calls, async (tool_call) => {
-        console.log('Tool call:', tool_call)
         const result = await this.callFunction(tool_call)
 
         const newMessage = {
