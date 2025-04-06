@@ -83,6 +83,7 @@ export class AppointmentService {
       //   accountId: authUser.accountId,
       // })
       
+      console.log(appointmentData)
       return appointment
     }
     return null
@@ -94,6 +95,8 @@ export class AppointmentService {
       appointment.available = true
       appointment.patientId = null
       appointment.cancelReason = cancelReason
+
+      console.log(appointmentData)
       return appointment
     }
     return null
@@ -106,6 +109,8 @@ export class AppointmentService {
       appointment.time = newTime
       appointment.appointmentType = appointmentType
       appointment.emergencyReason = emergencyReason
+
+      console.log(appointmentData)
       return appointment
     }
     return null

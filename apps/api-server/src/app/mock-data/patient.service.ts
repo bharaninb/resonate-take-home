@@ -28,6 +28,8 @@ export class PatientService {
       ...patient,
     }
     PatientData.push(newPatient)
+
+    console.log(PatientData)
     return newPatient
   }
 }
