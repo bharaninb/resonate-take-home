@@ -77,6 +77,11 @@ export class AppointmentService {
       appointment.patientId = patientId
       appointment.appointmentType = appointmentType
       appointment.emergencyReason = emergencyReason
+
+      // Simulate sending a notification
+      // await this.pubSubService.publish(PubSubTopics.NEW_APPOINTMENT, {
+      //   accountId: authUser.accountId,
+      // })
       
       return appointment
     }
