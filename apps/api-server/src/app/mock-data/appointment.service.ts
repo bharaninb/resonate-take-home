@@ -80,7 +80,7 @@ export class AppointmentService {
 
       // Simulate sending a notification
       // await this.pubSubService.publish(PubSubTopics.NEW_APPOINTMENT, {
-      //   accountId: authUser.accountId,
+      //   appointmentId,
       // })
       
       console.log(appointmentData)

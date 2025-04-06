@@ -17,7 +17,7 @@ class NotificationService {
         appointmentTime: data['appointmentTime'] as string,
         appointmentType: data['appointmentType'] as string,
       },
-      types: [NotificationType.SLACK],
+      types: [NotificationType.SLACK, NotificationType.EMAIL, NotificationType.PUSH],
     })
   }
 }

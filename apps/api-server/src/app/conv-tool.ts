@@ -173,6 +173,8 @@ const convTools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
         strict: true,
       },
     },
+
+    // Function to create multiple appointment for the entire family. This function will be called only if the user is asking for booking an appointment for multiple family members. For example, if the user is asking for booking an appointment for his/her spouse and kids.
     
     // Function for getting available time slots for the tentative dates so that user can choose the date and time for the appointment. This function will be called only if the user is not sure about the date and time for the appointment.
 
